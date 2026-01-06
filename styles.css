@@ -1303,7 +1303,7 @@ section {
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 80px;
 }
@@ -1462,38 +1462,31 @@ section {
 
 @media (max-width: 768px) {
     .video-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        margin-bottom: 50px;
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+        margin-bottom: 60px;
     }
 
     .video-card.featured {
         grid-column: auto;
     }
 
+    .video-thumbnail {
+        aspect-ratio: 16/9;
+        width: 100%;
+    }
+
     .video-info {
-        padding: 20px;
+        padding: 20px 15px;
     }
 
     .video-title {
         font-size: 18px;
-    }
-
-    .youtube-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .subsection-title {
-        font-size: 26px;
+        line-height: 1.4;
     }
 
     .longform .container {
-        padding: 0 8px;
-    }
-
-    .video-thumbnail {
-        aspect-ratio: 16/10;
+        padding: 0 15px;
     }
 }
 
