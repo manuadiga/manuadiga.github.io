@@ -1824,6 +1824,7 @@ section {
         transform: translate(-20px, 20px) scale(0.9);
     }
 }
+
 /* ========================================
    TOOLS & GEAR SECTION
    ======================================== */
@@ -1848,14 +1849,17 @@ section {
 
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 20px;
     justify-content: center;
+    justify-items: center;
 }
 
-.gear-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    max-width: 600px; /* Limit width for 2 items */
+/* Special grid for the AI tools row to fit more items */
+.tools-grid-ai {
+    grid-template-columns: repeat(10, 1fr);
+    margin-top: 20px;
+    max-width: 1000px;
 }
 
 .tool-card {
@@ -1867,7 +1871,14 @@ section {
     align-items: center;
     justify-content: center;
     aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 120px;
     transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.tool-card.small {
+    max-width: 80px;
+    padding: 12px;
 }
 
 .tool-card:hover {
@@ -1882,80 +1893,52 @@ section {
     border-radius: var(--radius-md);
 }
 
-/* AI Marquee */
+@media (max-width: 768px) {
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .tools-grid-ai {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+
+    .tool-card {
+        padding: 10px;
+    }
+
+    .tool-card.small {
+        max-width: 60px;
+    }
+}
+
+/* AI Sliding Marquee */
 .ai-marquee-container {
     overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto 0;
     position: relative;
-    padding: 20px 0;
-    /* Fade edges */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .marquee-content {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     width: max-content;
-    animation: scroll 30s linear infinite;
+    animation: scroll_infinite 30s linear infinite;
 }
 
 .marquee-content:hover {
     animation-play-state: paused;
 }
 
-.ai-tag {
-    padding: 10px 25px;
-    background: var(--color-glass);
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
-    font-family: var(--font-display);
-    font-size: 16px;
-    white-space: nowrap;
-    color: var(--color-text);
-    transition: all var(--transition-normal);
-}
-
-.ai-tag:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: scale(1.05);
-}
-
-@keyframes scroll {
+@keyframes scroll_infinite {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
-    }
-}
-
-@media (max-width: 768px) {
-    .tools-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 cols on mobile */
-    }
-    
-    .gear-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .tool-card {
-        padding: 10px;
-    }
-}
-
-/* Tool Card Small Variant */
-.tool-card.small {
-    width: 70px;
-    height: 70px;
-    padding: 12px;
-    flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-    .tool-card.small {
-        width: 50px;
-        height: 50px;
-        padding: 8px;
     }
 }
