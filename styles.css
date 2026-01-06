@@ -834,7 +834,8 @@ img {
     }
 
     .hero-scroll {
-        display: none;
+        display: flex;
+        bottom: 20px;
     }
 }
 
@@ -856,8 +857,8 @@ img {
         margin-bottom: 30px;
     }
 
-    .scroll-indicator {
-        display: none;
+    .hero-scroll {
+        bottom: 20px;
     }
 }
 
