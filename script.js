@@ -255,7 +255,7 @@ function initCounterAnimation() {
             }
         });
     }, {
-        threshold: 0.5
+        threshold: 0.2
     });
 
     counters.forEach(counter => counterObserver.observe(counter));
